@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
             .to(contentContainer, {
                 clipPath: 'inset(0% 0% 0% 0%)',
                 opacity: 1,
-                duration: 1.2,
+                duration: 0.01,
                 ease: 'power2.out'
             });
     }, 1000); // Adjust time as necessary
