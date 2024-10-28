@@ -147,30 +147,10 @@ nav {
   display: flex;
   justify-content: center;
 }
-section.spacer {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 section.image-unmask {
   height: 100vh;
   overflow: hidden;
-}
-
-.inner {
-  margin: 50px;
-  padding: 50px;
-  min-height: 25vh;
-  margin-left: 10vw;
-  max-width: 80vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.9);
-  border-radius: 10px;
 }
 
 #img {
