@@ -5,10 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moving R</title>
-    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-    <!-- GSAP & ScrollTrigger -->
-    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
@@ -84,27 +81,157 @@
             </div>
         </div>
     </section>
-
-    
     <section class="vision-section">
         <div class="main-heading">
             We have a bold vision for the future of travel where you can better connect with the outdoors and each
             other. Lightship’s electric travel trailers allow you to visit new corners of the world while doing your
             part to preserve it.
         </div>
-        <div class="symbol ">
-            <img src="./asset/img/symbol.svg" alt="" height="30%" width="30%">
-        </div>
-    </section>
-    <!-- Main Content -->
-    <!-- <div>
-        <video id="video" src="./asset/videos/scrollVid.mp4"></video>
-    </div> -->
 
-    <script src="./app.js"></script>
+        <div>
+            <div class="symbol">
+                <img src="./asset/img/symbol.svg" alt="" height="30%" width="30%" class="scroll-image">
+            </div>
+
+    </section>
+
+
+
+<section class="image-unmask">
+
+<svg id="svg">
+  <defs>
+    <mask id="mask">
+      <rect width="100%" height="100%" fill="white"></rect>
+      <circle id="circle" cx="50%" cy="50%" r="60" fill="black"></circle>
+    </mask>
+  </defs>
+  <rect id="whiteLayer" width="100%" height="100%" fill="black"></rect>
+  <rect width="100%" height="100%" fill="white" mask="url(#mask)"></rect>
+</svg>
+
+</section>   
+
+<section class="vision-section">
+    <div class="main-heading">
+        We have a bold vision for the future of travel where you can better connect with the outdoors and each
+        other. Lightship’s electric travel trailers allow you to visit new corners of the world while doing your
+        part to preserve it.
+    </div>
+
+    <div>
+        <div class="symbol">
+            <img src="./asset/img/symbol.svg" alt="" height="30%" width="30%" class="scroll-image">
+        </div>
+
+</section>
+  
+<!-- <div id="content"></div> -->
+<video autoplay muted loop id="img"
+src=" https://player.vimeo.com/progressive_redirect/playback/805749786/rendition/1080p/file.mp4?loc=external&signature=e2c2d62e2e5fe9da4f335d36c84f37f249b9ced201fb6349d71535e1459bf954">
+
+</video>
+<!-- <img id="img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/106114/smile.jpg"> -->
+    
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+    <script>
+     console.clear();
+
+const svg = document.querySelector("#svg");
+const img = document.querySelector("#img");
+const circle = document.querySelector("#circle");
+const pad = 4;
+
+let radius = +circle.getAttribute("r");
+let imgWidth, imgHeight;
+
+gsap.set(img, {
+  scale: 2,
+  xPercent: -50,
+  yPercent: -50
+});
+
+var tl = gsap.timeline({
+    scrollTrigger: {  
+      trigger: '.image-unmask',
+      pin: true,
+      start: "top top",
+      end: '+=2500',
+      //end: "bottom bottom",
+      scrub: 0.2,
+    },
+    defaults: {
+      duration: 1
+    }
+  })
+  .to(circle, {
+    attr: {
+      r: () => radius
+    }
+  }, 0)
+  .to(img, {
+    scale: 1,
+    opacity: 1,
+  }, 0)
+  .to("#whiteLayer", {
+    alpha: 0,
+    ease: "power1.in",
+    duration: 1 - 0.25
+  }, 0.25)
+;
+  
+
+
+window.addEventListener("load", init);
+window.addEventListener("resize", resize);
+
+function init() {
+      
+  imgWidth = img.naturalWidth;
+  imgHeight = img.naturalHeight;
+    
+  resize();  
+}
+
+function resize() {
+    
+  tl.progress(0);
+  
+  const r = svg.getBoundingClientRect();
+  const rectWidth = r.width + pad;
+  const rectHeight = r.height + pad;
+  
+  const rx = rectWidth / imgWidth;
+  const ry = rectHeight / imgHeight;
+  
+  const ratio = Math.max(rx, ry);
+  
+  const width = imgWidth * ratio;
+  const height = imgHeight * ratio;
+    
+  const dx = rectWidth / 2;
+  const dy = rectHeight / 2;
+  radius = Math.sqrt(dx * dx + dy * dy);
+            
+  gsap.set(img, { width, height });
+    
+  tl.invalidate();
+  
+  ScrollTrigger.refresh();
+  
+}
+    </script>
+    <script src="./app.js"></script>
+
 </body>
 
 </html>
