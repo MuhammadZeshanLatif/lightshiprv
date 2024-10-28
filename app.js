@@ -104,5 +104,32 @@ function resize() {
 
 }
 
+  // Wait for the DOM to be fully loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.getElementById("video");
+
+    // Ensure video metadata is loaded
+    video.addEventListener("loadedmetadata", () => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Use GSAP to control video time based on scroll
+        gsap.to(video, {
+            scrollTrigger: {
+                trigger: ".intro-section",
+                start: "top center",   // start animation when top of section reaches center of viewport
+                end: "bottom center",   // end animation when bottom of section reaches center
+                scrub: true,            // smooth scrubbing
+                onEnter: () => video.play(),     // Play when entering
+                onLeave: () => video.pause(),    // Pause when leaving
+                onEnterBack: () => video.play(), // Play when scrolling back into view
+                onLeaveBack: () => video.pause() // Pause when scrolling out of view
+            },
+            currentTime: video.duration, // Animate from start to end of video
+            ease: "none"
+        });
+    });
+});
+
+
 requestAnimationFrame(raf);
 
