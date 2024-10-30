@@ -141,7 +141,7 @@ gsap.from('.intro-img',{
 gsap.from('.hero-video',{
     y:100,
     scrub:1,
-    duration:0.5,
+    duration:2,
    
 })
 
