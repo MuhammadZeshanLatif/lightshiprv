@@ -13,14 +13,14 @@
 
 <body>
     <!-- Preloader -->
-    <div class="preloader">
+    <!-- <div class="preloader">
         <div class="loader"></div>
-    </div>
+    </div> -->
     <!-- Hero section -->
     <!-- class="content-container" -->
 
 
-    <section class="nav-hero-sec content-container">
+    <section class="nav-hero-sec ">
         <nav>
             <div class="menu gap-5 align-items-center d-flex">
                 <div class="hamburger">
@@ -74,9 +74,9 @@
                     src=" https://player.vimeo.com/progressive_redirect/playback/805749786/rendition/1080p/file.mp4?loc=external&signature=e2c2d62e2e5fe9da4f335d36c84f37f249b9ced201fb6349d71535e1459bf954">
 
                 </video>
-                <div class="video-btn">
+                <!-- <div class="video-btn">
 
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -92,7 +92,10 @@
             </div> -->
     </section>
     <section class="image-unmask">
+        <video autoplay muted loop id="img"
+        src="https://player.vimeo.com/progressive_redirect/playback/810348431/rendition/1080p/file.mp4?loc=external&signature=b336d3d447904667ed43cbc1dc9d74e2278cc1e2b0e07c4ab99edc509bc5ffcf">
 
+    </video>
         <svg id="svg">
             <defs>
                 <mask id="mask">
@@ -105,33 +108,39 @@
         </svg>
 
     </section>
-    <video autoplay muted loop id="img"
+    <!-- <video autoplay muted loop id="img"
         src="https://player.vimeo.com/progressive_redirect/playback/810348431/rendition/1080p/file.mp4?loc=external&signature=b336d3d447904667ed43cbc1dc9d74e2278cc1e2b0e07c4ab99edc509bc5ffcf">
 
-    </video>
-    
-    
-    
-    
-    
-    
-    
+    </video> -->
+
+
+
+
+
+
+
     <section class="intro-section">
         <div class="main-heading">
             Introducing the aero electric <br> L1 travel trailer.
         </div>
-        <div class="intro-img">
-            <img src="./asset/img/Solar_Close_UX.jpg" class="scroll-image" alt="">
+        <div class="intro-img2">
+            <div class="intro-img"></div>
         </div>
-        <video
-            id="intro-video"
-            class="intro-video"
-            muted
-            playsinline
-            src="https://res.cloudinary.com/dx8majtk1/video/upload/ac_none,c_scale,ki_0.1,q_auto,vc_h264,w_1680/v1711028378/lightshiprv-scroll-video-vimeo_ikhngx.mp4">
-        </video>
+        
+       
+        <div class="int-vid">
+            <video id="intro-video" class="intro-video" muted playsinline
+                src="https://res.cloudinary.com/dx8majtk1/video/upload/ac_none,c_scale,ki_0.1,q_auto,vc_h264,w_1680/v1711028378/lightshiprv-scroll-video-vimeo_ikhngx.mp4">
+            </video>
+        </div>
     </section>
 
+    <section class="explore-section">
+        <div class="row">
+            <div class="col explore"></div>
+            <div class="col reverse"></div>
+        </div>
+    </section>
 
 
 
@@ -144,7 +153,7 @@
     <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
-    
+
     <script src="./app.js"></script>
 
 </body>

@@ -179,10 +179,48 @@ section.image-unmask {
  line-height: 82px;
  margin-bottom: 20px;
 }
-.intro-img,.intro-video{
+.intro-img2{
+  position: sticky;
+  top: 0;
+}
+.intro-img {
+  
+  background: url('./asset/img/Solar_Close_UX.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
   position: sticky;
   top: 0; 
 }
+
 .intro-video{
   width: 100%;
+  position: sticky;
+  top: 0; 
+}
+.explore-section{
+  margin:10px 60px;
+}
+.explore{
+  margin-right: 10px;
+  border-radius: 20px;
+  height: 700px;
+  width: 100%;
+  background: url('https://lightshiprv.com/uploads/config/Reserve_CTA_InteriorA-1200x750.jpeg') no-repeat center center;
+}
+
+.reverse{
+  margin-left: 10px;
+  border-radius: 20px;
+  height: 700px;
+  width: 100%;
+  background: url('https://lightshiprv.com/uploads/config/Reserve_CTA_Exterior-1200x750.jpeg') no-repeat center center;
+}
+.explore:hover{
+  background:#29525e;
+
+}
+
+.reverse:hover{
+  background:#fa5c40;
 }

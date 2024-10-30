@@ -60,8 +60,7 @@ var tl = gsap.timeline({
         alpha: 0,
         ease: "power1.in",
         duration: 1 - 0.25
-    }, 0.25)
-    ;
+    }, 0.25);
 
 
 
@@ -104,30 +103,30 @@ function resize() {
 
 }
 
-  // Wait for the DOM to be fully loaded
+gsap.from('.intro-img',{
+    scale:0.9,
+    duration:3,
+    delay:2,
+    borderRadius:"10px",
+    borderRadius:"20px",
+    backgroundSize: "cover",
+    scrollTrigger:{
+        trigger:'.intro-img2',
+        scroller:'body',
+        scrub:0.5,
+        start:"top 50%",
+        end:"bottom 100%",
+        markers:true,
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const video = document.getElementById("intro-video");
+    }
+})
 
-        // Ensure the video metadata is loaded before working with its duration
-        video.addEventListener("loadedmetadata", () => {
-            gsap.registerPlugin(ScrollTrigger);
-
-            gsap.to(video, {
-                scrollTrigger: {
-                    trigger: ".intro-section",
-                    start: "top center", 
-                    end: "bottom center", 
-                    scrub: true, 
-                    markers: true, 
-                },
-                currentTime: video.duration, 
-                ease: "none" 
-            });
-        });
-    });
-
-
+gsap.from('.hero-video',{
+    y:50,
+    scrub:1,
+    duration:2,
+    delay:3
+})
 
 
 requestAnimationFrame(raf);
