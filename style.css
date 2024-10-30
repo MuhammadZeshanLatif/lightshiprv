@@ -206,7 +206,9 @@ section.image-unmask {
   border-radius: 20px;
   height: 700px;
   width: 100%;
-  background: url('https://lightshiprv.com/uploads/config/Reserve_CTA_InteriorA-1200x750.jpeg') no-repeat center center;
+  background: url('./asset/img/invert.jpeg') no-repeat center center;
+  transition: flex-grow 0.3s ease, transform 0.3s ease;
+  transition: flex-grow 0.3s;
 }
 
 .reverse{
@@ -214,13 +216,23 @@ section.image-unmask {
   border-radius: 20px;
   height: 700px;
   width: 100%;
-  background: url('https://lightshiprv.com/uploads/config/Reserve_CTA_Exterior-1200x750.jpeg') no-repeat center center;
+  
+  background: url('./asset/img/explore.jpeg') no-repeat center center;
+  transition: flex-grow 0.3s ease, transform 0.3s ease;
+  transition: flex-grow 0.3s;
 }
 .explore:hover{
   background:#29525e;
+  flex-grow: 2;
 
 }
 
 .reverse:hover{
+
   background:#fa5c40;
+    flex-grow: 2;
+}
+.cntnt h2{
+  color: white;
+
 }
