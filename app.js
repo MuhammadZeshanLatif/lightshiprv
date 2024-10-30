@@ -107,25 +107,42 @@ gsap.from('.intro-img',{
     scale:0.9,
     duration:3,
     delay:2,
-    borderRadius:"10px",
     borderRadius:"20px",
     backgroundSize: "cover",
     scrollTrigger:{
         trigger:'.intro-img2',
         scroller:'body',
         scrub:0.5,
-        start:"top 50%",
-        end:"bottom 100%",
-        markers:true,
+        start:"top 100%",
+        end:"bottom 1%",
+       
 
     }
-})
+});
+
+
+// gsap.to('.intro-section',{
+//     // margin:"10px 60px",
+//     duration:3,
+//     delay:2,
+//     borderRadius:"20px",
+//     backgroundSize: "cover",
+//     scrollTrigger:{
+//         trigger:'.intro-section',
+//         scroller:'body',
+//         scrub:0.5,
+//         start:"top 50%",
+//         end:"bottom 100%",
+//         markers:true,
+
+//     }
+// })
 
 gsap.from('.hero-video',{
-    y:50,
+    y:100,
     scrub:1,
-    duration:2,
-    delay:3
+    duration:0.5,
+   
 })
 
 
