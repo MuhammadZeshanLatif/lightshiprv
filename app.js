@@ -145,6 +145,33 @@ gsap.from('.hero-video',{
    
 })
 
+gsap.from(".intro-section",{
+    
+    clipPath: "inset(140px)",
+    borderInnerRadius:50,
+    scrollTrigger:{
+                trigger:'.intro-section',
+                scroller:'body',
+                scrub:0.5,
+                start:"top 50%",
+                end:"bottom 100%",
+                //markers:true,
+        
+            }
+});
+gsap.from(".intro-video", {
+    clipPath: "inset(100% 0 0 0)",  // Start fully clipped
+    duration: 3,                     // Total animation duration
+    scrollTrigger: {
+        trigger: '.intro-video',
+        scroller: 'body',
+        scrub: 1,
+        start: "top 20%",         // Start the animation when .intro-img reaches the center of the viewport
+        end: "30% 20%",                // End the animation after scrolling 500 pixels beyond the start point
+        markers: true,               // Optional: Shows markers for start and end in the viewport
+    }
+});
+
 
 requestAnimationFrame(raf);
 
