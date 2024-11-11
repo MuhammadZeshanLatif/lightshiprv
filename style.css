@@ -222,10 +222,12 @@ section.image-unmask {
   flex-grow: 2;
 
 }
-.explore:hover .cnt{
-  transform: translateY(0);
-}
 
+
+.explore:hover .cnt {
+  transform: translateY(0); 
+  transition: transform 0.3s ease;
+}
 .reverse:hover{
 
   background:#fa5c40;
@@ -233,6 +235,7 @@ section.image-unmask {
 }
 .reverse:hover .cnt{
   transform: translateY(0);
+  transition: transform 0.3s ease;
 }
 .cnt h2 {
   font-size: 47px;
@@ -244,5 +247,6 @@ section.image-unmask {
   color: white;
 }
 .cnt {
+  transition: transform 0.3s ease;
   transform: translateY(127px);
 }
