@@ -4,7 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+body{
+  background-color: #f4f4f4;
+}
 .hero-section video {
   border-radius: 10px;
   width: 416px;
@@ -192,8 +194,10 @@ section.image-unmask {
 
 .explore-section{
   margin:10px 60px;
+
 }
 .explore{
+  overflow: hidden;
   display: flex;
   margin-right: 10px;
   border-radius: 20px;
@@ -206,6 +210,7 @@ section.image-unmask {
 }
 
 .reverse{
+  overflow: hidden;
   display: flex;
   margin-left: 10px;
   border-radius: 20px;
@@ -249,4 +254,114 @@ section.image-unmask {
 .cnt {
   transition: transform 0.3s ease;
   transform: translateY(127px);
+}
+.incredible{
+  padding: 20px 20px 20px 40px;
+  background-color: white;
+  margin:60px 50px;
+  border-radius: 20px;
+  display: flex;
+}
+.incredible img{
+  width: 100%;
+  border-radius: 10px;
+}
+.incredible .row .col-lg-4{
+  padding-right: 100px;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  justify-content: center;
+}
+.incredible span,.incredible p{
+  font-size: 17px;
+  font-weight: 600;
+}
+.incredible h2{
+  font-size: 40px;
+  font-weight: 600;
+  text-align: unset;
+}
+.incredible button {
+  color: black;
+  width: 150px;
+  background: transparent;
+  border-radius: 15px;
+  padding: 15px;
+}
+/* slider */
+
+.splide__slide {
+  overflow:hidden ;
+  transform: translateX(50px);
+  margin-left: 20px;
+  width: calc(25%) !important;
+  height: 600px;
+  width: 500px !important;
+
+}
+
+.splide__pagination__page { display: none; }
+.my-slider-progress { background: #ccc; }
+.my-carousel-progress-bar {
+  height: 1px;
+  background:  #000;;
+  margin-bottom: 20px;
+  transition: width 0.3s ease;
+}
+.splide__arrow{
+  display: none;
+}
+.imgs{
+  overflow: hidden;
+  background-color: #161010;
+  border-radius: 10px;
+  height: 320px;
+ 
+}
+.splide__slide img {
+  height: 100%;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+.splide__slide:hover img {
+  transform: scale(1.1); /* Scale image to 110% on hover */
+}
+.splide__slide .date{
+  font-family:monospace ;
+  font-size: 17px;
+  /* font-weight: 300; */
+  margin-top: 20px;
+}
+.splide__slide .img-title{
+  width: 80%;
+  font-size: 20px;
+  /* font-weight: 300; */
+  margin-top: 20px;
+  font-weight: 500;
+}
+.splide__slide:hover .img-title{
+  color: #fa5c40;
+}
+.headin{
+  margin-top: 150px;
+  margin-bottom: 30px;
+  margin-left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.journal{
+  font-size: 40px;
+}
+.artical{
+  background-color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 10px;
+  padding:5px 10px;
+  margin-top: 8px;
+}
+.lightsgio{
+  padding: 100px;
 }

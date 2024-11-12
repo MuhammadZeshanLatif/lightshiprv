@@ -1,3 +1,17 @@
+// Initialize Lenis
+const lenis = new Lenis();
+
+// Listen for the scroll event and log the event data
+lenis.on('scroll', (e) => {
+  console.log(e);
+});
+
+// Use requestAnimationFrame to continuously update the scroll
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
 
 // Initialize GSAP Box Reveal Animation
 window.addEventListener('load', () => {
@@ -159,19 +173,63 @@ gsap.from(".intro-section",{
         
             }
 });
+
+
 gsap.from(".intro-video", {
-    clipPath: "inset(100% 0 0 0)",  // Start fully clipped
-    duration: 3,                     // Total animation duration
+    clipPath: "inset(100% 0 0 0)", 
+    duration: 3,                     
     scrollTrigger: {
         trigger: '.intro-video',
         scroller: 'body',
         scrub: 1,
-        start: "top 20%",         // Start the animation when .intro-img reaches the center of the viewport
-        end: "30% 20%",                // End the animation after scrolling 500 pixels beyond the start point
+        start: "top 20%",         
+        end: "30% 20%",                
         markers: true,               // Optional: Shows markers for start and end in the viewport
     }
 });
+gsap.to(".intro-video", {
+    scrollTrigger: {
+      trigger: '.intro-video',
+      scroller: 'body',
+      scrub: true,
+      start: "top top",      // Start pinning as soon as the video reaches the top of the viewport
+      end: "+=200%",         // End scroll-triggered playback after 200% of the viewport height
+      pin: true,             // Pin the video while scrolling
+      onUpdate: (self) => {
+        const video = document.querySelector('.intro-video');
+        video.currentTime = video.duration * self.progress; // Control video time based on scroll progress
+      },
+      onLeave: () => {
+        const video = document.querySelector('.intro-video');
+        video.pause();        // Pause the video when scrolling leaves the section
+        video.currentTime = video.duration; // Set video to end
+      },
+      onEnterBack: () => {
+        const video = document.querySelector('.intro-video');
+        video.play();         // Resume video if scrolling back up
+      }
+    }
+  });
 
 
-requestAnimationFrame(raf);
 
+//slider
+document.addEventListener('DOMContentLoaded', function () {
+    var splide = new Splide('.splide', {
+        type: 'slide', // Set this to 'slide', 'loop', or 'fade'
+        perPage: 2,
+        pagination: true,
+        // Add any other options you need
+    });
+
+    splide.on('mounted move', function () {
+        var bar = document.querySelector('.my-carousel-progress-bar');
+        if (bar && bar.style) {
+            var end = splide.length;
+            var rate = Math.min((splide.index + 2) / end, 1);
+            bar.style.width = String(100 * rate) + '%';
+        }
+    });
+
+    splide.mount();
+});
