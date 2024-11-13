@@ -1,17 +1,18 @@
-// // Initialize Lenis
-// const lenis = new Lenis();
+// Initialize Lenis
+const lenis = new Lenis();
 
-// // Listen for the scroll event and log the event data
-// lenis.on('scroll', (e) => {
-//   console.log(e);
-// });
+// Listen for the scroll event and log the event data
+lenis.on('scroll', (e) => {
+  console.log(e);
+});
 
-// // Use requestAnimationFrame to continuously update the scroll
-// function raf(time) {
-//   lenis.raf(time);
-//   requestAnimationFrame(raf);
-// }
-// requestAnimationFrame(raf);
+// Use requestAnimationFrame to continuously update the scroll
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
 
 // Initialize GSAP Box Reveal Animation
 window.addEventListener('load', () => {
@@ -187,29 +188,61 @@ gsap.from(".intro-video", {
         markers: true,               // Optional: Shows markers for start and end in the viewport
     }
 });
+// gsap.to(".intro-video", {
+//     scrollTrigger: {
+//       trigger: '.intro-video',
+//       scroller: 'body',
+//       scrub: true,
+//       start: "top top",
+//       end: "+=200%",
+//       pin: true,
+//       onUpdate: (self) => {
+//         const video = document.querySelector('.intro-video');
+//         const newTime = video.duration * self.progress;
+        
+//         // Move video time slightly on scroll based on change in scroll progress
+//         video.currentTime += (newTime - video.currentTime) * 0.1; 
+//       },
+//       onLeave: () => {
+//         const video = document.querySelector('.intro-video');
+//         video.pause();
+//         video.currentTime = video.duration;
+//       },
+//       onEnterBack: () => {
+//         const video = document.querySelector('.intro-video');
+//         video.play();
+//       }
+//     }
+//   });
+
+
 gsap.to(".intro-video", {
     scrollTrigger: {
       trigger: '.intro-video',
       scroller: 'body',
       scrub: true,
-      start: "top top",      // Start pinning as soon as the video reaches the top of the viewport
-      end: "+=200%",         // End scroll-triggered playback after 200% of the viewport height
-      pin: true,             // Pin the video while scrolling
+      start: "top top",
+      end: "+=200%",
+      pin: true,
       onUpdate: (self) => {
         const video = document.querySelector('.intro-video');
-        video.currentTime = video.duration * self.progress; // Control video time based on scroll progress
+        const newTime = video.duration * self.progress;
+        
+        // Move video time slightly on scroll based on change in scroll progress
+        video.currentTime += (newTime - video.currentTime) * 0.1; 
       },
       onLeave: () => {
         const video = document.querySelector('.intro-video');
-        video.pause();        // Pause the video when scrolling leaves the section
-        video.currentTime = video.duration; // Set video to end
+        video.pause();
+        video.currentTime = video.duration;
       },
       onEnterBack: () => {
         const video = document.querySelector('.intro-video');
-        video.play();         // Resume video if scrolling back up
+        video.play();
       }
     }
   });
+  
 
 
 

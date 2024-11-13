@@ -82,11 +82,16 @@ body {
   padding-bottom: 100px;
   width: 500px;
 }
+.navebar {
+padding: 30px 15px;
+}
 nav {
-  background-color: transparent;
+  background: rgb(255,255,255,0.4);
   display: flex;
+  
   justify-content: space-between;
-  padding: 30px 20px 0 20px;
+  padding: 10px 10px;
+  border-radius: 10px;
   align-items: center;
 }
 .hamburger {
@@ -216,8 +221,8 @@ section.image-unmask {
   width: 100%;
 
   background: url("./asset/img/explore.jpeg") no-repeat center center;
-  transition: flex-grow 0.3s ease, transform 0.3s ease;
-  transition: flex-grow 0.3s;
+
+  transition: flex-grow 0.9s;
   align-items: end;
 }
 .explore:hover {
@@ -227,7 +232,7 @@ section.image-unmask {
 
 .explore:hover .cnt {
   transform: translateY(0);
-  transition: transform 0.3s ease;
+  transition: transform 0.9s ease;
 }
 .reverse:hover {
   background: #fa5c40;
@@ -235,7 +240,7 @@ section.image-unmask {
 }
 .reverse:hover .cnt {
   transform: translateY(0);
-  transition: transform 0.3s ease;
+  transition: transform 0.9s ease;
 }
 .cnt h2 {
   font-size: 47px;
