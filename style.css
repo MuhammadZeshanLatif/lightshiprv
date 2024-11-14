@@ -82,18 +82,79 @@ body {
   padding-bottom: 100px;
   width: 500px;
 }
-.navebar {
-padding: 30px 15px;
-}
+.navebar {padding: 30px 15px;
+         position:absolute;
+        }
 nav {
-  background: rgb(255,255,255,0.4);
+  width: 98%;
+  z-index: 100;
+  position: fixed;
   display: flex;
-  
   justify-content: space-between;
   padding: 10px 10px;
   border-radius: 10px;
   align-items: center;
 }
+nav .menu{
+  color:white;
+
+}
+.c-button_rail_inner {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  height: 100%;
+  animation: railHorizontal 12s linear infinite; /* Adjusted duration for smoother effect */
+}
+
+.c-button_rail_wrap {
+  height: 66px;
+  position: absolute;
+  top: 100px;
+  background-color: #fa5c40;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* height: 100%; */
+  white-space: nowrap;
+  overflow: hidden; /* Ensure content doesn't spill out */
+}
+.c-button_rail_wrap span{
+  color: white;
+}
+.nav-button button:hover .c-button_rail_wrap {
+  top: -43px;
+  transition: top 0.5s ease-in-out; /* Smooth transition */
+}
+
+.nav-button button:hover {
+  background-color: transparent;
+  border:none;
+  padding-left: 0;
+  padding-right: 0;
+  transition: border 1s ease-in-out, /* Smooth transition */
+}
+
+
+.nav-button button .btn-placeholder {
+  position: relative;
+  top: 0; /* Ensure the initial top value is set */
+  transition: top 0.5s ease-in-out; /* Apply transition to the initial state */
+}
+
+.nav-button button:hover .btn-placeholder {
+  top: -40px;
+}
+
+
+
+@keyframes railHorizontal {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Ensure it moves half the content width for continuous loop */
+}
+
+
 .hamburger {
   display: flex;
   align-items: center;
@@ -115,10 +176,14 @@ nav {
   color: #fff;
 }
 .nav-button button {
+  height: 50px;
+  overflow: hidden;
   padding: 10px 10px;
   border-width: 1px;
   font-size: 16px;
   font-weight: 600;
+  color: white;
+  width: 140px;
 }
 .video-btn {
   width: 50px;

@@ -11,9 +11,6 @@ function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
-
-requestAnimationFrame(raf);
-
 // Initialize GSAP Box Reveal Animation
 window.addEventListener('load', () => {
     const preloader = document.querySelector('.preloader');
@@ -227,9 +224,10 @@ gsap.to(".intro-video", {
       onUpdate: (self) => {
         const video = document.querySelector('.intro-video');
         const newTime = video.duration * self.progress;
-        
+  
         // Move video time slightly on scroll based on change in scroll progress
-        video.currentTime += (newTime - video.currentTime) * 0.1; 
+        video.currentTime += (newTime - video.currentTime) * 1;
+        video.pause();
       },
       onLeave: () => {
         const video = document.querySelector('.intro-video');
@@ -242,6 +240,7 @@ gsap.to(".intro-video", {
       }
     }
   });
+  
   
 
 
