@@ -1,17 +1,14 @@
 // Initialize Lenis
 const lenis = new Lenis();
 
-// Listen for the scroll event and log the event data
-lenis.on('scroll', (e) => {
-  console.log(e);
-});
-
 // Use requestAnimationFrame to continuously update the scroll
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
-// Initialize GSAP Box Reveal Animation
+requestAnimationFrame(raf);
+
+// GSAP Box Reveal Animation
 window.addEventListener('load', () => {
     const preloader = document.querySelector('.preloader');
     const contentContainer = document.querySelector('.content-container');
@@ -30,6 +27,7 @@ window.addEventListener('load', () => {
             });
     }, 1000); // Adjust time as necessary
 });
+
 console.clear();
 
 const svg = document.querySelector("#svg");
@@ -52,43 +50,35 @@ var tl = gsap.timeline({
         pin: true,
         start: "top top",
         end: '+=2500',
-        //end: "bottom bottom",
         scrub: 0.2,
     },
     defaults: {
         duration: 1
     }
 })
-    .to(circle, {
-        attr: {
-            r: () => radius
-        }
-    }, 0)
-    .to(img, {
-        scale: 1,
-        opacity: 1,
-    }, 0)
-    .to("#whiteLayer", {
-        alpha: 0,
-        ease: "power1.in",
-        duration: 1 - 0.25
-    }, 0.25);
-
-
+.to(circle, {
+    attr: { r: () => radius }
+}, 0)
+.to(img, {
+    scale: 1,
+    opacity: 1,
+}, 0)
+.to("#whiteLayer", {
+    alpha: 0,
+    ease: "power1.in",
+    duration: 0.75
+}, 0.25);
 
 window.addEventListener("load", init);
 window.addEventListener("resize", resize);
 
 function init() {
-
     imgWidth = img.naturalWidth;
     imgHeight = img.naturalHeight;
-
     resize();
 }
 
 function resize() {
-
     tl.progress(0);
 
     const r = svg.getBoundingClientRect();
@@ -97,7 +87,6 @@ function resize() {
 
     const rx = rectWidth / imgWidth;
     const ry = rectHeight / imgHeight;
-
     const ratio = Math.max(rx, ry);
 
     const width = imgWidth * ratio;
@@ -110,148 +99,86 @@ function resize() {
     gsap.set(img, { width, height });
 
     tl.invalidate();
-
     ScrollTrigger.refresh();
-
 }
 
-gsap.from('.intro-img',{
-    scale:0.9,
-    duration:3,
-    delay:2,
-    borderRadius:"20px",
+gsap.from('.intro-img', {
+    scale: 0.9,
+    duration: 3,
+    delay: 2,
+    borderRadius: "20px",
     backgroundSize: "cover",
-    scrollTrigger:{
-        trigger:'.intro-img2',
-        scroller:'body',
-        scrub:0.5,
-        start:"top 100%",
-        end:"bottom 1%",
-       
-
+    scrollTrigger: {
+        trigger: '.intro-img2',
+        scroller: 'body',
+        scrub: 0.5,
+        start: "top 100%",
+        end: "bottom 1%",
     }
 });
 
-
-// gsap.to('.intro-section',{
-//     // margin:"10px 60px",
-//     duration:3,
-//     delay:2,
-//     borderRadius:"20px",
-//     backgroundSize: "cover",
-//     scrollTrigger:{
-//         trigger:'.intro-section',
-//         scroller:'body',
-//         scrub:0.5,
-//         start:"top 50%",
-//         end:"bottom 100%",
-//         markers:true,
-
-//     }
-// })
-
-gsap.from('.hero-video',{
-    y:100,
-    scrub:1,
-    duration:2,
-   
-})
-
-gsap.from(".intro-section",{
-    
-    clipPath: "inset(140px)",
-    borderInnerRadius:50,
-    scrollTrigger:{
-                trigger:'.intro-section',
-                scroller:'body',
-                scrub:0.5,
-                start:"top 50%",
-                end:"bottom 100%",
-                //markers:true,
-        
-            }
+gsap.from('.hero-video', {
+    y: 100,
+    scrub: 1,
+    duration: 2,
 });
 
+gsap.from(".intro-section", {
+    clipPath: "inset(140px)",
+    scrollTrigger: {
+        trigger: '.intro-section',
+        scroller: 'body',
+        scrub: 0.5,
+        start: "top 50%",
+        end: "bottom 100%",
+    }
+});
 
 gsap.from(".intro-video", {
-    clipPath: "inset(100% 0 0 0)", 
-    duration: 3,                     
+    clipPath: "inset(100% 0 0 0)",
+    duration: 3,
     scrollTrigger: {
         trigger: '.intro-video',
         scroller: 'body',
         scrub: 1,
-        start: "top 20%",         
-        end: "30% 20%",                
-        markers: true,               // Optional: Shows markers for start and end in the viewport
+        start: "top 20%",
+        end: "30% 20%",
+        markers: true, // Optional: Shows markers for start and end in the viewport
     }
 });
-// gsap.to(".intro-video", {
-//     scrollTrigger: {
-//       trigger: '.intro-video',
-//       scroller: 'body',
-//       scrub: true,
-//       start: "top top",
-//       end: "+=200%",
-//       pin: true,
-//       onUpdate: (self) => {
-//         const video = document.querySelector('.intro-video');
-//         const newTime = video.duration * self.progress;
-        
-//         // Move video time slightly on scroll based on change in scroll progress
-//         video.currentTime += (newTime - video.currentTime) * 0.1; 
-//       },
-//       onLeave: () => {
-//         const video = document.querySelector('.intro-video');
-//         video.pause();
-//         video.currentTime = video.duration;
-//       },
-//       onEnterBack: () => {
-//         const video = document.querySelector('.intro-video');
-//         video.play();
-//       }
-//     }
-//   });
-
 
 gsap.to(".intro-video", {
     scrollTrigger: {
-      trigger: '.intro-video',
-      scroller: 'body',
-      scrub: true,
-      start: "top top",
-      end: "+=200%",
-      pin: true,
-      onUpdate: (self) => {
-        const video = document.querySelector('.intro-video');
-        const newTime = video.duration * self.progress;
-  
-        // Move video time slightly on scroll based on change in scroll progress
-        video.currentTime += (newTime - video.currentTime) * 1;
-        video.pause();
-      },
-      onLeave: () => {
-        const video = document.querySelector('.intro-video');
-        video.pause();
-        video.currentTime = video.duration;
-      },
-      onEnterBack: () => {
-        const video = document.querySelector('.intro-video');
-        video.play();
-      }
+        trigger: '.intro-video',
+        scroller: 'body',
+        scrub: true,
+        start: "top top",
+        end: "+=200%",
+        pin: true,
+        onUpdate: (self) => {
+            const video = document.querySelector('.intro-video');
+            const newTime = video.duration * self.progress;
+            video.currentTime += (newTime - video.currentTime) * 0.1;
+            video.pause();
+        },
+        onLeave: () => {
+            const video = document.querySelector('.intro-video');
+            video.pause();
+            video.currentTime = video.duration;
+        },
+        onEnterBack: () => {
+            const video = document.querySelector('.intro-video');
+            video.play();
+        }
     }
-  });
-  
-  
+});
 
-
-
-//slider
+// Slider
 document.addEventListener('DOMContentLoaded', function () {
     var splide = new Splide('.splide', {
-        type: 'slide', // Set this to 'slide', 'loop', or 'fade'
+        type: 'slide',
         perPage: 2,
         pagination: true,
-        // Add any other options you need
     });
 
     splide.on('mounted move', function () {
@@ -265,3 +192,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
     splide.mount();
 });
+let colapsableMenu = document.querySelector(".hamburger");
+let menuColapsable = document.querySelector(".menu-colapsable");
+let navbar = document.getElementById("navbar");
+let isMenuOpen = false; // Track the menu state
+
+let toggleMenu = () => {
+    console.log("toggleMenu");
+    if (isMenuOpen) {
+        // Slide up to hide the menu
+        gsap.to(menuColapsable, {
+            top: '-100vh', // Move it above the viewport
+            duration: 1, // Duration of the animation
+            ease: "power2.out" // Easing function for smooth animation
+        });
+        navbar.classList.remove("black"); // Remove the class to change color back
+    } else {
+        // Slide down to show the menu
+        gsap.to(menuColapsable, {
+            top: 0, // Slide down to the top of the viewport
+            duration: 1, // Duration of the animation
+            ease: "power2.out" // Easing function for smooth animation
+        });
+        navbar.classList.add("black"); // Add the class to change color
+    }
+    isMenuOpen = !isMenuOpen; // Toggle the menu state
+};
+
+// Attach the function to the button click event
+colapsableMenu.addEventListener('click', toggleMenu);
+

@@ -82,9 +82,10 @@ body {
   padding-bottom: 100px;
   width: 500px;
 }
-.navebar {padding: 30px 15px;
-         position:absolute;
-        }
+.navebar {
+  padding: 30px 15px;
+  position: absolute;
+}
 nav {
   width: 98%;
   z-index: 100;
@@ -95,9 +96,8 @@ nav {
   border-radius: 10px;
   align-items: center;
 }
-nav .menu{
-  color:white;
-
+nav .menu {
+  color: white;
 }
 .c-button_rail_inner {
   display: flex;
@@ -120,7 +120,7 @@ nav .menu{
   white-space: nowrap;
   overflow: hidden; /* Ensure content doesn't spill out */
 }
-.c-button_rail_wrap span{
+.c-button_rail_wrap span {
   color: white;
 }
 .nav-button button:hover .c-button_rail_wrap {
@@ -130,12 +130,11 @@ nav .menu{
 
 .nav-button button:hover {
   background-color: transparent;
-  border:none;
+  border: none;
   padding-left: 0;
   padding-right: 0;
-  transition: border 1s ease-in-out, /* Smooth transition */
+  transition: border 1s ease-in-out; /* Smooth transition */
 }
-
 
 .nav-button button .btn-placeholder {
   position: relative;
@@ -147,15 +146,17 @@ nav .menu{
   top: -40px;
 }
 
-
-
 @keyframes railHorizontal {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* Ensure it moves half the content width for continuous loop */
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  } /* Ensure it moves half the content width for continuous loop */
 }
 
-
 .hamburger {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -479,7 +480,7 @@ footer {
   outline: none;
   border: none;
 }
-.footer-last{
+.footer-last {
   margin-top: 100px;
 }
 
@@ -489,4 +490,12 @@ footer {
   border-radius: 10px;
   background: black;
   color: white;
+}
+.menu-colapsable {
+  position: absolute;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  background-color: #e8e8e8;
+  top: -100vh; /* Initially hidden above the viewport */
 }
