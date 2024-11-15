@@ -143,7 +143,7 @@ gsap.from(".intro-video", {
         scrub: 1,
         start: "top 20%",
         end: "30% 20%",
-        markers: true, // Optional: Shows markers for start and end in the viewport
+        // markers: true,
     }
 });
 
@@ -153,12 +153,12 @@ gsap.to(".intro-video", {
         scroller: 'body',
         scrub: true,
         start: "top top",
-        end: "+=200%",
+        end: "+=400%",
         pin: true,
         onUpdate: (self) => {
             const video = document.querySelector('.intro-video');
             const newTime = video.duration * self.progress;
-            video.currentTime += (newTime - video.currentTime) * 0.1;
+            video.currentTime += (newTime - video.currentTime) * 1;
             video.pause();
         },
         onLeave: () => {
@@ -207,6 +207,9 @@ let toggleMenu = () => {
             ease: "power2.out" // Easing function for smooth animation
         });
         navbar.classList.remove("black"); // Remove the class to change color back
+        colapsableMenu.classList.remove("hamburgerBlack"); // Remove the class to change color back
+        colapsableMenu.classList.add("hamburgerWhite"); // Remove the class to change color back
+
     } else {
         // Slide down to show the menu
         gsap.to(menuColapsable, {
@@ -215,10 +218,14 @@ let toggleMenu = () => {
             ease: "power2.out" // Easing function for smooth animation
         });
         navbar.classList.add("black"); // Add the class to change color
+        colapsableMenu.classList.add("hamburgerBlack"); // Remove the class to change color back
+        colapsableMenu.classList.remove("hamburgerWhite");
     }
     isMenuOpen = !isMenuOpen; // Toggle the menu state
 };
 
 // Attach the function to the button click event
 colapsableMenu.addEventListener('click', toggleMenu);
+
+
 

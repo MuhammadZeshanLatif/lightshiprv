@@ -6,6 +6,7 @@
 }
 body {
   background-color: #f4f4f4;
+  overflow-x: hidden;
 }
 .hero-section video {
   border-radius: 10px;
@@ -83,7 +84,7 @@ body {
   width: 500px;
 }
 .navebar {
-  padding: 30px 15px;
+  padding: 15px 15px;
   position: absolute;
 }
 nav {
@@ -166,6 +167,10 @@ nav .menu {
   border: 1px solid white;
   border-radius: 50px;
   gap: 3px;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+  position: relative;
 }
 .hamburger div {
   height: 1px;
@@ -497,5 +502,177 @@ footer {
   height: 100vh;
   width: 100vw;
   background-color: #e8e8e8;
-  top: -100vh; /* Initially hidden above the viewport */
+  top: -100vh;
+}
+.colaps-video {
+  /* position: absolute; */
+  width: 50%;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  margin-left: 26px;
+}
+.menu-colapsable {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+.menu-colapsable ul {
+  font-weight: 600;
+}
+
+.menu-colapsable ul li {
+  list-style: none;
+}
+.moving-menu ul li {
+  font-weight: 400;
+  height: 100px;
+  font-size: 60px;
+  overflow: hidden;
+}
+.moving-menu {
+  width: 100%;
+}
+.moving-menu .c-button_rail_wrap {
+  position: relative;
+  top: 100px;
+  width: 150%;
+  right: 100px;
+  border-radius: 10px;
+  height: 90px;
+  padding-bottom: 10px;
+}
+.moving-menu ul li:hover .c-button_rail_wrap {
+  top: -85px;
+}
+.moving-menu ul li:hover {
+  overflow: visible;
+}
+.moving-menu .c-button_rail_inner {
+  animation: railHorizontal 5s linear infinite;
+}
+.moving-menu ul li:nth-child(2) .c-button_rail_wrap {
+  background-color: #40522e;
+}
+.moving-menu ul li:nth-child(3) .c-button_rail_wrap {
+  background-color: #c4a173;
+}
+.moving-menu ul li:nth-child(4) .c-button_rail_wrap {
+  background-color: #29525e;
+}
+.moving-menu ul li:nth-child(5) .c-button_rail_wrap {
+  background-color: #000;
+}
+.menu-colapsable img {
+  /* height: 700px; */
+  width: 75%;
+  border-radius: 10px;
+}
+.menu-colaps-img {
+  position: absolute;
+  top: 30px;
+  right: -65px;
+  z-index: -1;
+  width: 26%;
+}
+.colaps-row {
+  margin-top: calc(8%) !important;
+}
+.colaps-menu-video {
+  position: absolute;
+  bottom: 0;
+}
+
+@media (min-width: 1915px) and (max-width: 1925px) {
+  .offset-lg-1.col-lg-4.rowOffset {
+    margin-left: calc(24%);
+  }
+  .moving-menu .c-button_rail_wrap {
+    width: 130%;
+  }
+}
+.hamburgerWhite {
+  position: relative;
+  background: transparent;
+  overflow: hidden; /* Hide overflow for smooth transition */
+}
+.hamburgerWhite div {
+  transition: background 0.5s ease;
+  transition: transform 0.3s ease, top 0.3s ease, opacity 0.3s ease;
+}
+.hamburgerWhite:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: white;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease;
+  z-index: -1; /* Send the background behind the content */
+}
+.hamburgerWhite:hover:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+.hamburgerWhite:hover div {
+  background: black;
+}
+
+.hamburgerBlack {
+  position: relative;
+  background: transparent;
+  overflow: hidden; /* Hide overflow for smooth transition */
+}
+.hamburgerBlack div {
+  transition: background 0.5s ease;
+}
+.hamburgerBlack:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: black;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease;
+  z-index: -1; /* Send the background behind the content */
+}
+.hamburgerBlack:hover:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+.hamburgerBlack:hover div {
+  background: white;
+}
+.black .menu {
+  color: black !important;
+}
+.black .logo {
+  color: black !important;
+}
+.black .nav-button {
+  visibility: hidden;
+}
+.black .hamburger {
+  border-color: black;
+}
+.black .hamburger div {
+  background-color: black;
+}
+.black .hamburger:hover div {
+  background-color: white;
+}
+.hamburger .frst-ch {
+  top: 10px;
+}
+.hamburger .second-ch {
+  top: 20px;
+}
+.hamburgerBlack .frst-ch {
+  transform: rotate(45deg);
+  top: 15px; /* Center the lines to form a cross */
+}
+.hamburgerBlack .second-ch {
+  transform: rotate(-45deg);
+  top: 15px; /* Center the lines to form a cross */
 }
