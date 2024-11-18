@@ -96,6 +96,43 @@ nav {
   padding: 10px 10px;
   border-radius: 10px;
   align-items: center;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.nav-change{
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(45px);
+}
+.nav-change .hamburger div{
+  background-color: black;
+}
+.black .hmbrgr-parent{
+  background-color: transparent;
+
+}
+.black .hamburger .second-ch{
+  display: block;
+
+}
+.hamburger .second-ch{
+  display: none;
+
+}
+
+.nav-change .nav-button button{
+  border-color: #000;
+  color: black;
+}
+.nav-change .hamburger{
+  border-color: #000;
+}
+.nav-change .logo,.nav-change .menu{
+  color: #000;
+}
+
+.nav-change.black {
+  background-color:transparent;
+  backdrop-filter: blur(0px);
 }
 nav .menu {
   color: white;
@@ -166,15 +203,21 @@ nav .menu {
   width: 50px;
   border: 1px solid white;
   border-radius: 50px;
-  gap: 3px;
+  
   position: relative;
   background: transparent;
   overflow: hidden;
   position: relative;
 }
+.hamburger .frst-ch{
+  margin-top: 5px;
+}
+.black .hmbrgr-parent {
+  display: none;
+}
 .hamburger div {
   height: 1px;
-  width: 30px;
+  width: 25px;
   background-color: white;
 }
 .logo {
@@ -255,8 +298,7 @@ section.image-unmask {
   line-height: 82px;
   margin-bottom: 20px;
 }
-.intro-section {
-}
+
 .intro-section img {
   position: sticky;
   top: 0;
@@ -268,7 +310,7 @@ section.image-unmask {
 }
 
 .explore-section {
-  margin: 10px 60px;
+  margin: 21px 60px 10px 60px;
 }
 .explore {
   overflow: hidden;
@@ -512,6 +554,7 @@ footer {
   margin-left: 26px;
 }
 .menu-colapsable {
+  position: fixed;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -578,6 +621,7 @@ footer {
   margin-top: calc(8%) !important;
 }
 .colaps-menu-video {
+  width: 50%;
   position: absolute;
   bottom: 0;
 }
@@ -611,6 +655,7 @@ footer {
   transition: transform 0.3s ease;
   z-index: -1; /* Send the background behind the content */
 }
+
 .hamburgerWhite:hover:before {
   transform: translate(-50%, -50%) scale(1);
 }
@@ -663,16 +708,55 @@ footer {
   background-color: white;
 }
 .hamburger .frst-ch {
-  top: 10px;
+  /* top: 10px; */
 }
 .hamburger .second-ch {
-  top: 20px;
+  /* top: 20px; */
 }
 .hamburgerBlack .frst-ch {
-  transform: rotate(45deg);
-  top: 15px; /* Center the lines to form a cross */
+  transform: translateY(-2px) rotate(45deg);
 }
 .hamburgerBlack .second-ch {
-  transform: rotate(-45deg);
-  top: 15px; /* Center the lines to form a cross */
+  transform: translateY(-2px) rotate(-45deg);
+}
+.scrolled{
+  background-color: green;
+}
+
+
+.caption-container{
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 38%;
+  z-index: 1;
+  /* margin: auto; */
+}
+
+.caption-container .caption{
+  font-size: 76px;
+  color: white;
+  opacity: 0;
+}
+.nav-change .hamburgerWhite:before {
+  background: black;
+}
+.nav-change .hamburgerWhite:hover div {
+  background: white;
+}
+.menu-hambrgr.gap-5.align-items-center.d-flex .menu {
+  transition: transform 0.3s ease; /* Smooth transition for transform */
+}
+
+.menu-hambrgr.gap-5.align-items-center.d-flex:hover .menu {
+  transform: translateX(-20px);
+}
+.caption div{
+  display: none;
+}
+.start-video{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,7 +1,7 @@
-// Initialize Lenis
+
 const lenis = new Lenis();
 
-// Use requestAnimationFrame to continuously update the scroll
+
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
@@ -146,6 +146,7 @@ gsap.from(".intro-video", {
         // markers: true,
     }
 });
+const captions = document.querySelector('#caption');
 
 gsap.to(".intro-video", {
     scrollTrigger: {
@@ -159,19 +160,330 @@ gsap.to(".intro-video", {
             const video = document.querySelector('.intro-video');
             const newTime = video.duration * self.progress;
             video.currentTime += (newTime - video.currentTime) * 1;
+
+            // Smoothly change the caption text and slide it from bottom to top
+            if (self.progress < 0.15) {
+                gsap.to(captions, {
+                    
+                    duration: 0.5,
+                    y: 0, // Slide from the bottom
+                    opacity: 1, // Ensure opacity is 1
+                    ease: "power2.out"
+                });
+                //  captions.innerHTML = "Bright, open spaces.";
+                document.querySelector('.cp1').style.display="block";
+                document.querySelector('.cp2').style.display="none";
+                document.querySelector('.cp3').style.display="none";
+                document.querySelector('.cp4').style.display="none";
+            } else if (self.progress < 0.25) {
+                gsap.to(captions, {
+                    duration: 1,
+                    delay:1,
+                    y: 0, // Slide from the bottom
+                    opacity: 1,
+                    ease: "power2.out"
+                });
+                document.querySelector('.cp1').style.display="none";
+                document.querySelector('.cp2').style.display="none";
+                document.querySelector('.cp3').style.display="none";
+                document.querySelector('.cp4').style.display="none";
+            } else if (self.progress < 0.35) {
+                gsap.to(captions, {
+                    duration: 1,
+                    delay:1,
+                    y: 0, // Slide from the bottom
+                    opacity: 1,
+                    ease: "power2.out"
+                });
+                document.querySelector('.cp1').style.display="none";
+                document.querySelector('.cp2').style.display="block";
+                document.querySelector('.cp3').style.display="none";
+                document.querySelector('.cp4').style.display="none";
+            } else if (self.progress < 0.45) {
+                gsap.to(captions, {
+                    duration: 1,
+                    delay:1,
+                    y: 0, // Slide from the bottom
+                    opacity: 1,
+                    ease: "power2.out"
+                });
+                document.querySelector('.cp1').style.display="none";
+                document.querySelector('.cp2').style.display="none";
+                document.querySelector('.cp3').style.display="none";
+                document.querySelector('.cp4').style.display="none";
+            } else if (self.progress < 0.65) {
+                gsap.to(captions, {
+                    duration: 1,
+                    delay:1,
+                    y: 0, // Slide from the bottom
+                    opacity: 1,
+                    ease: "power2.out"
+                });
+                document.querySelector('.cp1').style.display="none";
+                document.querySelector('.cp2').style.display="none";
+                document.querySelector('.cp3').style.display="block";
+                document.querySelector('.cp4').style.display="none";
+            } else if (self.progress < 0.75) {
+                gsap.to(captions, {
+                    duration: 1,
+                    delay:1,
+                    y: 0, // Slide from the bottom
+                    opacity: 1,
+                    ease: "power2.out"
+                });
+                document.querySelector('.cp1').style.display="none";
+                document.querySelector('.cp2').style.display="none";
+                document.querySelector('.cp3').style.display="none";
+                document.querySelector('.cp4').style.display="none";
+            } else if (self.progress < 0.85) {
+                gsap.to(captions, {
+                    duration: 0.5,
+                    delay:1,
+                    y: 0, // Slide from the bottom
+                    opacity: 1,
+                    ease: "power2.out"
+                });
+                document.querySelector('.cp1').style.display="none";
+                document.querySelector('.cp2').style.display="none";
+                document.querySelector('.cp3').style.display="none";
+                document.querySelector('.cp4').style.display="block";
+            }
+
+            // Show or hide captions based on progress
+            if (self.progress < 0.9) {
+                captions.style.display = "block";
+            } else {
+                captions.style.display = "none";
+            }
+
             video.pause();
         },
         onLeave: () => {
             const video = document.querySelector('.intro-video');
             video.pause();
             video.currentTime = video.duration;
+
+            // Hide captions when leaving the scrollTrigger
+            captions.style.display = "none";
         },
         onEnterBack: () => {
             const video = document.querySelector('.intro-video');
             video.play();
+
+            // Reset captions when scrolling back
+            captions.style.display = "none";
+        },
+        onLeaveBack: () => {
+            // Hide captions when scrolling back
+            captions.style.display = "none";
         }
     }
 });
+// const captions = document.querySelector('#caption');
+
+// gsap.to(".intro-video", {
+//     scrollTrigger: {
+//         trigger: '.intro-video',
+//         scroller: 'body',
+//         scrub: true,
+//         start: "top top",
+//         end: "+=400%",
+//         pin: true,
+//         onUpdate: (self) => {
+//             const video = document.querySelector('.intro-video');
+//             const newTime = video.duration * self.progress;
+//             video.currentTime += (newTime - video.currentTime) * 1;
+
+//             // Smoothly change the caption text and slide it from bottom to top
+//             if (self.progress < 0.15) {
+//                 gsap.to(captions, {
+                    
+//                     duration: 0.5,
+//                     y: 0, // Slide from the bottom
+//                     opacity: 1, // Ensure opacity is 1
+//                     ease: "power2.out"
+//                 });
+//                 captions.innerHTML = `Integrated solar and <br> all-electric everything.`;
+//             } else if (self.progress < 0.25) {
+//                 gsap.to(captions, {
+//                     duration: 1,
+//                     delay:1,
+//                     y: 0, // Slide from the bottom
+//                     opacity: 1,
+//                     ease: "power2.out"
+//                 });
+//                 captions.innerHTML = "";
+//             } else if (self.progress < 0.35) {
+//                 gsap.to(captions, {
+//                     duration: 1,
+//                     delay:1,
+//                     y: 0, // Slide from the bottom
+//                     opacity: 1,
+//                     ease: "power2.out"
+//                 });
+//                 captions.innerHTML = "Bright, open spaces.";
+//             } else if (self.progress < 0.45) {
+//                 gsap.to(captions, {
+//                     duration: 1,
+//                     delay:1,
+//                     y: 0, // Slide from the bottom
+//                     opacity: 1,
+//                     ease: "power2.out"
+//                 });
+//                 captions.innerHTML = "";
+//             } else if (self.progress < 0.65) {
+//                 gsap.to(captions, {
+//                     duration: 1,
+//                     delay:1,
+//                     y: 0, // Slide from the bottom
+//                     opacity: 1,
+//                     ease: "power2.out"
+//                 });
+//                 captions.innerHTML = "Endless views.";
+//             } else if (self.progress < 0.75) {
+//                 gsap.to(captions, {
+//                     duration: 1,
+//                     delay:1,
+//                     y: 0, // Slide from the bottom
+//                     opacity: 1,
+//                     ease: "power2.out"
+//                 });
+//                 captions.innerHTML = "";
+//             } else if (self.progress < 0.85) {
+//                 gsap.to(captions, {
+//                     duration: 0.5,
+//                     delay:1,
+//                     y: 0, // Slide from the bottom
+//                     opacity: 1,
+//                     ease: "power2.out"
+//                 });
+//                 captions.innerHTML = `Camp Mode to Road Mode <br> at the press of a button`;
+//             }
+
+//             // Show or hide captions based on progress
+//             if (self.progress < 0.9) {
+//                 captions.style.display = "block";
+//             } else {
+//                 captions.style.display = "none";
+//             }
+
+//             video.pause();
+//         },
+//         onLeave: () => {
+//             const video = document.querySelector('.intro-video');
+//             video.pause();
+//             video.currentTime = video.duration;
+
+//             // Hide captions when leaving the scrollTrigger
+//             captions.style.display = "none";
+//         },
+//         onEnterBack: () => {
+//             const video = document.querySelector('.intro-video');
+//             video.play();
+
+//             // Reset captions when scrolling back
+//             captions.style.display = "none";
+//         },
+//         onLeaveBack: () => {
+//             // Hide captions when scrolling back
+//             captions.style.display = "none";
+//         }
+//     }
+// });
+
+// const captions = document.querySelector('#caption');
+// gsap.to(".intro-video", {
+//     scrollTrigger: {
+//         trigger: '.intro-video',
+//         scroller: 'body',
+//         scrub: true,
+//         start: "top top",
+//         end: "+=400%",
+//         pin: true,
+//         onUpdate: (self) => {
+//             const video = document.querySelector('.intro-video');
+//             const newTime = video.duration * self.progress;
+//             video.currentTime += (newTime - video.currentTime) * 1;
+
+//             // Change caption color based on scroll progress
+//             if (self.progress < 0.9) {
+//                 captions.style.display = "block";
+//             } else {
+//                 captions.style.display = "none";
+//             }
+//             video.pause();
+//         },
+//         onLeave: () => {
+//             const video = document.querySelector('.intro-video');
+//             video.pause();
+//             video.currentTime = video.duration;
+
+//             // Change caption color to blue at the end
+//             captions.style.display = "none";
+//         },
+//         onEnterBack: () => {
+//             const video = document.querySelector('.intro-video');
+//             video.play();
+
+//             // Change caption color to white when scrolling back
+//             captions.style.display = "none";
+//         },
+//         onLeaveBack: () => {
+//             // Change caption color to white at the beginning
+//             captions.style.display = "none";
+//         }
+//     }
+// });
+
+// const captions = document.querySelectorAll('.caption');
+
+// gsap.to(".intro-video", {
+//     scrollTrigger: {
+//         trigger: '.intro-video',
+//         scroller: 'body',
+//         scrub: true,
+//         start: "top top",
+//         end: "+=400%",
+//         pin: true,
+//         onUpdate: (self) => {
+//             const video = document.querySelector('.intro-video');
+//             const newTime = video.duration * self.progress;
+//             video.currentTime += (newTime - video.currentTime) * 1;
+
+//             // Update captions based on scroll progress
+//             const progress = self.progress;
+//             captions.forEach((caption, index) => {
+//                 const start = index / captions.length; // Start showing this caption
+//                 const end = (index + 1) / captions.length; // End showing this caption
+
+//                 if (progress >= start && progress < end) {
+//                     caption.style.opacity = 1; // Fade in the current caption
+//                 } else {
+//                     caption.style.opacity = 0; // Fade out other captions
+//                 }
+//             });
+
+//             video.pause();
+//         },
+//         onLeave: () => {
+//             const video = document.querySelector('.intro-video');
+//             video.pause();
+//             video.currentTime = video.duration;
+
+//             // Hide all captions at the end
+//             captions.forEach(caption => (caption.style.opacity = 0));
+//         },
+//         onEnterBack: () => {
+//             const video = document.querySelector('.intro-video');
+//             video.play();
+//         },
+//         onLeaveBack: () => {
+//             // Reset all captions at the beginning
+//             captions.forEach(caption => (caption.style.opacity = 0));
+//         }
+//     }
+// });
+
 
 // Slider
 document.addEventListener('DOMContentLoaded', function () {
@@ -209,6 +521,7 @@ let toggleMenu = () => {
         navbar.classList.remove("black"); // Remove the class to change color back
         colapsableMenu.classList.remove("hamburgerBlack"); // Remove the class to change color back
         colapsableMenu.classList.add("hamburgerWhite"); // Remove the class to change color back
+        document.querySelector(".menu").innerText='Menu';
 
     } else {
         // Slide down to show the menu
@@ -220,12 +533,53 @@ let toggleMenu = () => {
         navbar.classList.add("black"); // Add the class to change color
         colapsableMenu.classList.add("hamburgerBlack"); // Remove the class to change color back
         colapsableMenu.classList.remove("hamburgerWhite");
+        document.querySelector(".black .menu").innerText='Close';
     }
     isMenuOpen = !isMenuOpen; // Toggle the menu state
 };
 
 // Attach the function to the button click event
 colapsableMenu.addEventListener('click', toggleMenu);
-
+function addClassOnScroll() {
+    const navbar = document.querySelector('.navbar');
+    let lastScrollTop = 0;
+  
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        navbar.classList.add('scrolled');
+        console.log("scrolled");
+      } else if (scrollTop < lastScrollTop && scrollTop < 100) {
+        //navbar.classList.remove('scrolled');
+        console.log("scrolled rem");
+      }
+  
+      lastScrollTop = scrollTop;
+    });
+  }
+  
+  addClassOnScroll();
+// GSAP ScrollTrigger setup
+gsap.to(".navs", {
+    scrollTrigger: {
+        trigger: "body",   // Apply scroll trigger to the body
+        scroller: "body",   // Apply scroll trigger to the body
+        start: "top+=100px top", // Start when the scroll position is 100px
+        end: "bottom bottom", // This will make the scrollTrigger last for the entire body scroll
+        toggleClass: {targets: ".navs", className: "nav-change"}, // Add 'nav-change' to .navs
+        scrub: false, // No smooth scrubbing needed here, just toggle based on scroll position
+        onUpdate: (self) => {
+            // Check the scroll position
+            if (self.scroll() > 100) {
+                // If scroll is greater than 100px, add the class
+                document.querySelector(".navs").classList.add("nav-change");
+            } else {
+                // If scroll is less than or equal to 100px, remove the class
+                document.querySelector(".navs").classList.remove("nav-change");
+            }
+        }
+    }
+});
 
 
