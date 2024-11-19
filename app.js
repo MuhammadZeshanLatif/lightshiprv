@@ -1,12 +1,15 @@
 
-const lenis = new Lenis();
-
-
-function raf(time) {
-  lenis.raf(time);
+const lenis = new Lenis({
+    duration: 3.0, // Increase duration to 2 seconds for smoother scrolling
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Custom easing function for smooth deceleration
+  });
+  
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
   requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
+  
 
 // GSAP Box Reveal Animation
 window.addEventListener('load', () => {
@@ -154,110 +157,231 @@ gsap.to(".intro-video", {
         scroller: 'body',
         scrub: true,
         start: "top top",
-        end: "+=400%",
+        end: "+=500%",
         pin: true,
         onUpdate: (self) => {
             const video = document.querySelector('.intro-video');
+            const captions = document.querySelector('.caption');
+            const cp1 = document.querySelector('.cp1');
+            const cp2 = document.querySelector('.cp2');
+            const cp3 = document.querySelector('.cp3');
+            const cp4 = document.querySelector('.cp4');
+        
             const newTime = video.duration * self.progress;
-            video.currentTime += (newTime - video.currentTime) * 1;
-
+            video.currentTime += (newTime - video.currentTime) * 0.15;
+        
             // Smoothly change the caption text and slide it from bottom to top
             if (self.progress < 0.15) {
                 gsap.to(captions, {
-                    
                     duration: 0.5,
                     y: 0, // Slide from the bottom
                     opacity: 1, // Ensure opacity is 1
                     ease: "power2.out"
                 });
-                //  captions.innerHTML = "Bright, open spaces.";
-                document.querySelector('.cp1').style.display="block";
-                document.querySelector('.cp2').style.display="none";
-                document.querySelector('.cp3').style.display="none";
-                document.querySelector('.cp4').style.display="none";
+                gsap.to(cp1, {
+                    visibility: "visible",
+                    opacity: 1,
+                    duration: 1, // Smooth fade-in for caption 1
+                    ease: "power2.out"
+                });
+                gsap.to([cp2, cp3, cp4], {
+                    visibility: "hidden",
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
             } else if (self.progress < 0.25) {
-                gsap.to(captions, {
+                gsap.to([cp1, cp3, cp4], {
+                    visibility: "hidden",
+                    opacity: 0,
                     duration: 1,
-                    delay:1,
-                    y: 0, // Slide from the bottom
-                    opacity: 1,
                     ease: "power2.out"
                 });
-                document.querySelector('.cp1').style.display="none";
-                document.querySelector('.cp2').style.display="none";
-                document.querySelector('.cp3').style.display="none";
-                document.querySelector('.cp4').style.display="none";
+                gsap.to(cp2, {
+                    visibility: "hidden",
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
             } else if (self.progress < 0.35) {
-                gsap.to(captions, {
+                gsap.to([cp1, cp4], {
+                    visibility: "hidden",
+                    opacity: 0,
                     duration: 1,
-                    delay:1,
-                    y: 0, // Slide from the bottom
-                    opacity: 1,
                     ease: "power2.out"
                 });
-                document.querySelector('.cp1').style.display="none";
-                document.querySelector('.cp2').style.display="block";
-                document.querySelector('.cp3').style.display="none";
-                document.querySelector('.cp4').style.display="none";
+                gsap.to(cp2, {
+                    visibility: "visible",
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+                gsap.to(cp3, {
+                    visibility: "hidden",
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
             } else if (self.progress < 0.45) {
-                gsap.to(captions, {
+                gsap.to([cp1, cp2, cp3], {
+                    visibility: "hidden",
+                    opacity: 0,
                     duration: 1,
-                    delay:1,
-                    y: 0, // Slide from the bottom
-                    opacity: 1,
                     ease: "power2.out"
                 });
-                document.querySelector('.cp1').style.display="none";
-                document.querySelector('.cp2').style.display="none";
-                document.querySelector('.cp3').style.display="none";
-                document.querySelector('.cp4').style.display="none";
+                gsap.to(cp4, {
+                    visibility: "hidden",
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
             } else if (self.progress < 0.65) {
-                gsap.to(captions, {
+                gsap.to([cp1, cp2, cp4], {
+                    visibility: "hidden",
+                    opacity: 0,
                     duration: 1,
-                    delay:1,
-                    y: 0, // Slide from the bottom
-                    opacity: 1,
                     ease: "power2.out"
                 });
-                document.querySelector('.cp1').style.display="none";
-                document.querySelector('.cp2').style.display="none";
-                document.querySelector('.cp3').style.display="block";
-                document.querySelector('.cp4').style.display="none";
+                gsap.to(cp3, {
+                    visibility: "visible",
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.out"
+                });
             } else if (self.progress < 0.75) {
-                gsap.to(captions, {
+                gsap.to([cp1, cp2, cp3, cp4], {
+                    visibility: "hidden",
+                    opacity: 0,
                     duration: 1,
-                    delay:1,
-                    y: 0, // Slide from the bottom
-                    opacity: 1,
                     ease: "power2.out"
                 });
-                document.querySelector('.cp1').style.display="none";
-                document.querySelector('.cp2').style.display="none";
-                document.querySelector('.cp3').style.display="none";
-                document.querySelector('.cp4').style.display="none";
             } else if (self.progress < 0.85) {
-                gsap.to(captions, {
-                    duration: 0.5,
-                    delay:1,
-                    y: 0, // Slide from the bottom
-                    opacity: 1,
+                gsap.to([cp1, cp2, cp3], {
+                    visibility: "hidden",
+                    opacity: 0,
+                    duration: 1,
                     ease: "power2.out"
                 });
-                document.querySelector('.cp1').style.display="none";
-                document.querySelector('.cp2').style.display="none";
-                document.querySelector('.cp3').style.display="none";
-                document.querySelector('.cp4').style.display="block";
+                gsap.to(cp4, {
+                    visibility: "visible",
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.out"
+                });
             }
-
+        
             // Show or hide captions based on progress
             if (self.progress < 0.9) {
                 captions.style.display = "block";
             } else {
                 captions.style.display = "none";
             }
-
+        
             video.pause();
         },
+        
+        // onUpdate: (self) => {
+        //     const video = document.querySelector('.intro-video');
+        //     const newTime = video.duration * self.progress;
+        //     video.currentTime += (newTime - video.currentTime) * 1;
+
+        //     // Smoothly change the caption text and slide it from bottom to top
+        //     if (self.progress < 0.15) {
+        //         gsap.to(captions, {
+                    
+        //             duration: 0.5,
+        //             y: 0, // Slide from the bottom
+        //             opacity: 1, // Ensure opacity is 1
+        //             ease: "power2.out"
+        //         });
+        //         //  captions.innerHTML = "Bright, open spaces.";
+        //         document.querySelector('.cp1').style.display="block";
+        //         document.querySelector('.cp2').style.display="none";
+        //         document.querySelector('.cp3').style.display="none";
+        //         document.querySelector('.cp4').style.display="none";
+        //     } else if (self.progress < 0.25) {
+        //         gsap.to(captions, {
+        //             duration: 1,
+        //             delay:1,
+        //             y: 0, // Slide from the bottom
+        //             opacity: 1,
+        //             ease: "power2.out"
+        //         });
+        //         document.querySelector('.cp1').style.display="none";
+        //         document.querySelector('.cp2').style.display="none";
+        //         document.querySelector('.cp3').style.display="none";
+        //         document.querySelector('.cp4').style.display="none";
+        //     } else if (self.progress < 0.35) {
+        //         gsap.to(captions, {
+        //             duration: 1,
+        //             delay:1,
+        //             y: 0, // Slide from the bottom
+        //             opacity: 1,
+        //             ease: "power2.out"
+        //         });
+        //         document.querySelector('.cp1').style.display="none";
+        //         document.querySelector('.cp2').style.display="block";
+        //         document.querySelector('.cp3').style.display="none";
+        //         document.querySelector('.cp4').style.display="none";
+        //     } else if (self.progress < 0.45) {
+        //         gsap.to(captions, {
+        //             duration: 1,
+        //             delay:1,
+        //             y: 0, // Slide from the bottom
+        //             opacity: 1,
+        //             ease: "power2.out"
+        //         });
+        //         document.querySelector('.cp1').style.display="none";
+        //         document.querySelector('.cp2').style.display="none";
+        //         document.querySelector('.cp3').style.display="none";
+        //         document.querySelector('.cp4').style.display="none";
+        //     } else if (self.progress < 0.65) {
+        //         gsap.to(captions, {
+        //             duration: 1,
+        //             delay:1,
+        //             y: 0, // Slide from the bottom
+        //             opacity: 1,
+        //             ease: "power2.out"
+        //         });
+        //         document.querySelector('.cp1').style.display="none";
+        //         document.querySelector('.cp2').style.display="none";
+        //         document.querySelector('.cp3').style.display="block";
+        //         document.querySelector('.cp4').style.display="none";
+        //     } else if (self.progress < 0.75) {
+        //         gsap.to(captions, {
+        //             duration: 1,
+        //             delay:1,
+        //             y: 0, // Slide from the bottom
+        //             opacity: 1,
+        //             ease: "power2.out"
+        //         });
+        //         document.querySelector('.cp1').style.display="none";
+        //         document.querySelector('.cp2').style.display="none";
+        //         document.querySelector('.cp3').style.display="none";
+        //         document.querySelector('.cp4').style.display="none";
+        //     } else if (self.progress < 0.85) {
+        //         gsap.to(captions, {
+        //             duration: 0.5,
+        //             delay:1,
+        //             y: 0, // Slide from the bottom
+        //             opacity: 1,
+        //             ease: "power2.out"
+        //         });
+        //         document.querySelector('.cp1').style.display="none";
+        //         document.querySelector('.cp2').style.display="none";
+        //         document.querySelector('.cp3').style.display="none";
+        //         document.querySelector('.cp4').style.display="block";
+        //     }
+
+        //     // Show or hide captions based on progress
+        //     if (self.progress < 0.9) {
+        //         captions.style.display = "block";
+        //     } else {
+        //         captions.style.display = "none";
+        //     }
+
+        //     video.pause();
+        // },
         onLeave: () => {
             const video = document.querySelector('.intro-video');
             video.pause();
@@ -583,20 +707,24 @@ gsap.to(".navs", {
 });
 
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
-// Animate only the clip-path (SVG shape)
-gsap.timeline({
-    scrollTrigger: {
-        trigger: ".start-video",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-        pin: true,
-    },
-})
-.to(".clip-path", {
-    scale: 10, // Grow only the clip-path
-    duration: 5,
-    ease: "power1.inOut",
-});
+// // Animate SVG on scroll
+// gsap.timeline({
+//     scrollTrigger: {
+//         trigger: ".start-video",
+//         start: "top top",
+//         end: "bottom top",
+//         scrub: true,
+//         pin: true,
+//     },
+// })
+// .to(".svg-shape", {
+//     scale: 10, // Scale up the SVG
+//     duration: 2,
+//     ease: "power1.inOut",
+// })
+// .to(".svg-shape", {
+//     opacity: 1, // Fade out the SVG
+//     duration: 1,
+// }, "-=0.5"); // Overlap fade-out with scaling

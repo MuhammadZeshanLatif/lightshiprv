@@ -738,6 +738,8 @@ footer {
   font-size: 76px;
   color: white;
   opacity: 0;
+  width: 100%;
+  /* display: flex; */
 }
 .nav-change .hamburgerWhite:before {
   background: black;
@@ -752,15 +754,19 @@ footer {
 .menu-hambrgr.gap-5.align-items-center.d-flex:hover .menu {
   transform: translateX(-20px);
 }
-.caption div{
-  display: none;
+.caption .cp{
+  position:absolute;
+  left: 0;
+  text-align: center;
+}
+
+.inner{
+  width: 100vw;
 }
 
 
 
 
-
-/* Container Styling */
 .start-video {
   height: 100vh;
   display: flex;
@@ -771,23 +777,25 @@ footer {
   background-color: white;
 }
 
-/* SVG Styling */
 .svg-shape {
   position: relative;
-  z-index: 2;
-  width: 30%;
-  
-  transform-origin: center;
+
+  transition: transform 0.2s linear;
 }
 
-/* Clip-Path Path */
-.clip-path {
-  transform-origin: center;
-}
-
-/* Video Styling */
 .svg-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure full width and height inside SVG */
+  object-fit: cover;
+}
+
+/* Next Section Styling */
+.next-section {
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: white;
 }
