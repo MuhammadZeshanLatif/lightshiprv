@@ -1,7 +1,8 @@
 
 const lenis = new Lenis({
-    duration: 3.0, // Increase duration to 2 seconds for smoother scrolling
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // Custom easing function for smooth deceleration
+    duration: 1, 
+    // easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t));
+    easing: (t) => Math.pow(t, 0.5)
   });
   
   function raf(time) {
@@ -159,7 +160,7 @@ gsap.to(".intro-video", {
         start: "top top",
         end: "+=500%",
         pin: true,
-        onUpdate: (self) => {
+       onUpdate: (self) => {
             const video = document.querySelector('.intro-video');
             const captions = document.querySelector('.caption');
             const cp1 = document.querySelector('.cp1');
@@ -173,7 +174,7 @@ gsap.to(".intro-video", {
             // Smoothly change the caption text and slide it from bottom to top
             if (self.progress < 0.15) {
                 gsap.to(captions, {
-                    duration: 0.5,
+                    duration: 1,
                     y: 0, // Slide from the bottom
                     opacity: 1, // Ensure opacity is 1
                     ease: "power2.out"
@@ -187,7 +188,7 @@ gsap.to(".intro-video", {
                 gsap.to([cp2, cp3, cp4], {
                     visibility: "hidden",
                     opacity: 0,
-                    duration: 1,
+                    duration: 2,
                     ease: "power2.out"
                 });
             } else if (self.progress < 0.25) {
@@ -278,7 +279,7 @@ gsap.to(".intro-video", {
             }
         
             video.pause();
-        },
+        }, 
         
         // onUpdate: (self) => {
         //     const video = document.querySelector('.intro-video');
