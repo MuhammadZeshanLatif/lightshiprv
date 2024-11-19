@@ -583,3 +583,20 @@ gsap.to(".navs", {
 });
 
 
+gsap.registerPlugin(ScrollTrigger);
+
+// Animate only the clip-path (SVG shape)
+gsap.timeline({
+    scrollTrigger: {
+        trigger: ".start-video",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        pin: true,
+    },
+})
+.to(".clip-path", {
+    scale: 10, // Grow only the clip-path
+    duration: 5,
+    ease: "power1.inOut",
+});
