@@ -767,35 +767,31 @@ footer {
 
 
 
-.start-video {
+/* .start-video {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   overflow: hidden;
-  background-color: white;
+  background: white;
+  position: relative;
 }
 
 .svg-shape {
-  position: relative;
-
-  transition: transform 0.2s linear;
+  width: 50vw;
+  height: auto;
 }
 
 .svg-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} */
 
-/* Next Section Styling */
-.next-section {
-  height: 100vh;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  color: white;
+.mask1 {
+  -webkit-mask-image: url('./asset/img/symbol.svg');
+  mask-image: url('./asset/img/symbol.svg');
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: 25%;
 }

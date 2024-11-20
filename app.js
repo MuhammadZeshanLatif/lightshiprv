@@ -708,24 +708,61 @@ gsap.to(".navs", {
 });
 
 
-// gsap.registerPlugin(ScrollTrigger);
 
-// // Animate SVG on scroll
+
+// Initialize GSAP and ScrollTrigger animation
+//gsap.registerPlugin(ScrollTrigger);
+
+// const svgClipPath = document.querySelector(".mask1");
+// const svgVideo = document.querySelector(".mask1");
+
 // gsap.timeline({
 //     scrollTrigger: {
 //         trigger: ".start-video",
 //         start: "top top",
-//         end: "bottom top",
-//         scrub: true,
+//         end: "+=1000",
+//         scrub: 0.5,
 //         pin: true,
 //     },
 // })
-// .to(".svg-shape", {
-//     scale: 10, // Scale up the SVG
-//     duration: 2,
-//     ease: "power1.inOut",
-// })
-// .to(".svg-shape", {
-//     opacity: 1, // Fade out the SVG
-//     duration: 1,
-// }, "-=0.5"); // Overlap fade-out with scaling
+//     .to(svgClipPath, {
+//         scale: 1.3, 
+//         transformOrigin: "center center",
+//         duration: 2,
+//         ease: "power1.inOut",
+
+        
+//     })
+//     .to(svgClipPath, {
+//         scale: 2, 
+//         transformOrigin: "center center",
+//         duration: 4,
+//         ease: "power1.inOut",
+        
+//     })
+//     .to(svgClipPath, {
+//         scale: 3, 
+//         transformOrigin: "center center",
+//         duration: 6,
+//         ease: "power1.inOut",
+//     });
+     
+const maskElement = document.querySelector(".mask1");
+
+let maskTimeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.mask-section',
+    pin: true,
+    start: "top top",
+    end: '+=1500',
+    scrub: 0.5,
+  }
+});
+
+// Mask-size ko barhane ka animation
+maskTimeline.to(maskElement, {
+  css: {
+    maskSize: "250%",
+  },
+  ease: "power1.inOut"
+});
