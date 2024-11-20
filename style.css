@@ -100,39 +100,37 @@ nav {
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-.nav-change{
+.nav-change {
   background-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(45px);
 }
-.nav-change .hamburger div{
+.nav-change .hamburger div {
   background-color: black;
 }
-.black .hmbrgr-parent{
+.black .hmbrgr-parent {
   background-color: transparent;
-
 }
-.black .hamburger .second-ch{
+.black .hamburger .second-ch {
   display: block;
-
 }
-.hamburger .second-ch{
+.hamburger .second-ch {
   display: none;
-
 }
 
-.nav-change .nav-button button{
+.nav-change .nav-button button {
   border-color: #000;
   color: black;
 }
-.nav-change .hamburger{
+.nav-change .hamburger {
   border-color: #000;
 }
-.nav-change .logo,.nav-change .menu{
+.nav-change .logo,
+.nav-change .menu {
   color: #000;
 }
 
 .nav-change.black {
-  background-color:transparent;
+  background-color: transparent;
   backdrop-filter: blur(0px);
 }
 nav .menu {
@@ -204,13 +202,13 @@ nav .menu {
   width: 50px;
   border: 1px solid white;
   border-radius: 50px;
-  
+
   position: relative;
   background: transparent;
   overflow: hidden;
   position: relative;
 }
-.hamburger .frst-ch{
+.hamburger .frst-ch {
   margin-top: 5px;
 }
 .black .hmbrgr-parent {
@@ -720,12 +718,11 @@ footer {
 .hamburgerBlack .second-ch {
   transform: translateY(-2px) rotate(-45deg);
 }
-.scrolled{
+.scrolled {
   background-color: green;
 }
 
-
-.caption-container{
+.caption-container {
   display: flex;
   justify-content: center;
   position: sticky;
@@ -734,7 +731,7 @@ footer {
   /* margin: auto; */
 }
 
-.caption-container .caption{
+.caption-container .caption {
   font-size: 76px;
   color: white;
   opacity: 0;
@@ -754,18 +751,15 @@ footer {
 .menu-hambrgr.gap-5.align-items-center.d-flex:hover .menu {
   transform: translateX(-20px);
 }
-.caption .cp{
-  position:absolute;
+.caption .cp {
+  position: absolute;
   left: 0;
   text-align: center;
 }
 
-.inner{
+.inner {
   width: 100vw;
 }
-
-
-
 
 /* .start-video {
   height: 100vh;
@@ -789,9 +783,15 @@ footer {
 } */
 
 .mask1 {
-  -webkit-mask-image: url('./asset/img/symbol.svg');
-  mask-image: url('./asset/img/symbol.svg');
+  -webkit-mask-image: url("./asset/img/symbol.svg");
+  mask-image: url("./asset/img/symbol.svg");
   mask-repeat: no-repeat;
   mask-position: center center;
   mask-size: 25%;
+  margin-bottom: 200px;
+}
+.c-header_logo_svg {
+  width: 100%;
+  height: auto;
+  max-width: 600px; /* Adjust as needed */
 }

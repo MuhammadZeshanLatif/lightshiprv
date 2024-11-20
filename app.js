@@ -747,14 +747,14 @@ gsap.to(".navs", {
 //         ease: "power1.inOut",
 //     });
      
-const maskElement = document.querySelector(".mask1");
+        const maskElement = document.querySelector(".mask1");
 
 let maskTimeline = gsap.timeline({
   scrollTrigger: {
     trigger: '.mask-section',
     pin: true,
     start: "top top",
-    end: '+=1500',
+    end: '+=2000',
     scrub: 0.5,
   }
 });
@@ -762,7 +762,72 @@ let maskTimeline = gsap.timeline({
 // Mask-size ko barhane ka animation
 maskTimeline.to(maskElement, {
   css: {
-    maskSize: "250%",
+    maskSize: "200%",
+    webkitMaskSize: "200%" // Cross-browser compatibility ke liye
   },
   ease: "power1.inOut"
 });
+
+
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  
+  gsap.to(".letter", {
+    scrollTrigger: {
+      trigger: ".logo",
+      start: "top top", 
+      end: '+=200',
+      scrub: true,
+      markers: true, // Remove or set to false for production
+    },
+    duration: 2,
+    opacity: 0,
+    y: 50,
+    stagger: 0.1,
+    ease: "power1.inOut"
+  });
+
+ 
+  gsap.to(".symbol", {
+    scrollTrigger: {
+      trigger: ".logo",
+      start: "top top", 
+      end: '+=200',
+      scrub: true,
+      markers: true, // Remove or set to false for production
+    },
+    scale: 2,
+    duration: 4,
+    y:70,
+    rotation: 360,
+    transformOrigin: "center center",
+    ease: "power1.inOut"
+  });
+  gsap.to(".lft", {
+    scrollTrigger: {
+      trigger: ".logo",
+      start: "top top", 
+      end: '+=200',
+      scrub: true,
+      markers: true, // Remove or set to false for production
+    },
+    duration: 4,
+    x:220,
+    transformOrigin: "center center",
+    ease: "power1.inOut"
+  });
+  gsap.to(".rgt", {
+    scrollTrigger: {
+      trigger: ".logo",
+      start: "top top", 
+      end: '+=200',
+      scrub: true,
+      markers: true, // Remove or set to false for production
+    },
+    duration: 4,
+    x:-220,
+    transformOrigin: "center center",
+    ease: "power1.inOut"
+  });
+
