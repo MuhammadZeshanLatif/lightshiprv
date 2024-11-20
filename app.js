@@ -779,7 +779,6 @@ maskTimeline.to(maskElement, {
       start: "top top", 
       end: '+=200',
       scrub: true,
-      markers: true, // Remove or set to false for production
     },
     duration: 2,
     opacity: 0,
@@ -791,11 +790,11 @@ maskTimeline.to(maskElement, {
  
   gsap.to(".symbol", {
     scrollTrigger: {
-      trigger: ".logo",
+      trigger: ".symbol",
       start: "top top", 
-      end: '+=200',
+      end: '+=400',
       scrub: true,
-      markers: true, // Remove or set to false for production
+    
     },
     scale: 2,
     duration: 4,
@@ -806,28 +805,84 @@ maskTimeline.to(maskElement, {
   });
   gsap.to(".lft", {
     scrollTrigger: {
-      trigger: ".logo",
+      trigger: ".lft",
       start: "top top", 
-      end: '+=200',
+      end: '+=400',
       scrub: true,
-      markers: true, // Remove or set to false for production
     },
     duration: 4,
     x:220,
-    transformOrigin: "center center",
-    ease: "power1.inOut"
   });
   gsap.to(".rgt", {
     scrollTrigger: {
-      trigger: ".logo",
+      trigger: ".rgt",
       start: "top top", 
-      end: '+=200',
+      end: '+=400',
       scrub: true,
-      markers: true, // Remove or set to false for production
     },
     duration: 4,
     x:-220,
+  });
+
+
+
+
+
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  
+  gsap.from(".c-footer_logo_letter", {
+    scrollTrigger: {
+      trigger: ".largLogo",
+      start: "bottom 90%", 
+      end: '+=200',
+      scrub: true,
+      markers: true,
+    },
+    duration: 5,
+    y: 230,
+    stagger: 0.1,
+    ease: "power1.inOut"
+  });
+  gsap.from(".c-footer_logo_symbol ", {
+    scrollTrigger: {
+        trigger: ".largLogo",
+        start: "bottom 90%", 
+        end: '+=200',
+      scrub: true,
+    
+    },
+    scale: 2,
+    duration: 4,
+    y:70,
+    rotation: 360,
     transformOrigin: "center center",
     ease: "power1.inOut"
   });
-
+  gsap.from(".lft2", {
+    scrollTrigger: {
+        trigger: ".largLogo",
+        start: "bottom 90%", 
+        end: '+=200',
+      scrub: true,
+    
+    },
+    x:100,
+    transformOrigin: "center center",
+    ease: "power1.inOut"
+  });
+ 
+  gsap.from(".rgh2", {
+    scrollTrigger: {
+        trigger: ".largLogo",
+        start: "bottom 90%", 
+        end: '+=200',
+      scrub: true,
+    
+    },
+    x:-100,
+    transformOrigin: "center center",
+    ease: "power1.inOut"
+  });
+ 
