@@ -838,7 +838,7 @@ maskTimeline.to(maskElement, {
       start: "bottom 90%", 
       end: '+=200',
       scrub: true,
-      markers: true,
+    //   markers: true,
     },
     duration: 5,
     y: 230,
